@@ -16,12 +16,13 @@ function getCountryByCode(countryCode, callback) {
 }
 
 getCountryByCode("ISR", (country) => {
-    console.log(country.borders[0])
-    getCountryByCode(country.borders[0], (countryBorderA) => {
-        console.log(countryBorderA)
-        getCountryByCode(countryBorderA.borders[0], (countryBorderB) => {
-            console.log(countryBorderB)
-            $("#country").val(countryBorderB.currencies[0].code)
+
+    country.borders.forEach(item => {
+        $("#borders").append(`<div id='${item}' class='loader'></div>`)
+        getCountryByCode(item, (result) => {
+            $(`#${item}`).html(result.name).attr({ class: "" })
         })
+
     })
+
 });

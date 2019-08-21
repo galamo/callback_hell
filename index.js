@@ -1,10 +1,10 @@
 const config = {
     codeUrl: "https://restcountries.eu/rest/v2/alpha",
+    currencyUrl: "https://api.exchangeratesapi.io/latest?base="
 }
 //https://api.exchangeratesapi.io/latest?base=ILS
 
 function getCountryByCode(countryCode, callback) {
-
     $.ajax({
         url: `${config.codeUrl}/${countryCode}`,
         method: "GET",
